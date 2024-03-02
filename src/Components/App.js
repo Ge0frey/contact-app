@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import AddContact from './AddContact';
 import Header from './Header';
 import ContactList from './ContactList';
 
+const myUuid = uuidv4();
+console.log(myUuid);
 
 function App () {
   const LOCAL_STORAGE_KEY = "contacts";
