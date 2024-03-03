@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AddContact from './AddContact';
 import Header from './Header';
 import ContactList from './ContactList';
-import { BrowserRouter as Router, Switch, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 const Uuid = uuidv4();
 console.log(Uuid);
@@ -45,8 +45,6 @@ function App () {
           <Route path="/add" element={<AddContact addContactHandler={addContactHandler} />} />
           <Route path="/" element={<ContactList contacts={contacts} getContactId={removeContactHandler} />} />
         </Routes>
-        {/* <AddContact addContactHandler = {addContactHandler}/> */}
-        {/* <ContactList contacts = {contacts} getContactId ={removeContactHandler}/> */}
       </Router>
     </div>
   )
