@@ -42,8 +42,22 @@ function App () {
       <Router>
         <Header/>
         <Routes>
-          <Route path="/add" element={<AddContact addContactHandler={addContactHandler} />} />
-          <Route path="/" element={<ContactList contacts={contacts} getContactId={removeContactHandler} />} />
+          <Route 
+            path="/" 
+            exact 
+            Component = {() => (
+              <ContactList 
+                contacts={contacts} 
+                getContactId ={removeContactHandler}
+              />
+            )}
+          />
+          <Route 
+            path="/add" 
+            Component = {() => (
+              <AddContact addContactHandler={addContactHandler}/>
+            )}
+          />
         </Routes>
       </Router>
     </div>
