@@ -5,7 +5,7 @@ import Header from './Header';
 import ContactList from './ContactList';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
-const Uuid = uuidv4();
+const Uuid = uuidv4;
 console.log(Uuid);
 
 function App () {
@@ -14,7 +14,7 @@ function App () {
 
   const addContactHandler = (contact) => {
     console.log(contact)
-    setContacts([...contacts, {id: Uuid, ...contact}])
+    setContacts([...contacts, {id: Uuid(), ...contact}])
   };
 
   const removeContactHandler = (id) => {
