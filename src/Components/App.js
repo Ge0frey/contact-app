@@ -4,6 +4,7 @@ import AddContact from './AddContact';
 import Header from './Header';
 import ContactList from './ContactList';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ContactDetail from "./ContactDetail"
 
 const Uuid = uuidv4;
 console.log(Uuid);
@@ -42,6 +43,7 @@ function App () {
       <Router>
         <Header/>
         <Routes>
+
           <Route 
             path="/" 
             exact 
@@ -52,12 +54,16 @@ function App () {
               />
             )}
           />
+
           <Route 
             path="/add" 
             Component = {() => (
               <AddContact addContactHandler={addContactHandler}/>
             )}
           />
+
+          <Route path="/contact/:id" Component={ContactDetail}/>
+
         </Routes>
       </Router>
     </div>
