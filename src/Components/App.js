@@ -62,7 +62,7 @@ function App () {
             )}
           />
 
-          <Route path="/contact/:id" Component={ContactDetail}/>
+          <Route path="/contact/:id" element={<ContactDetail />} />
 
         </Routes>
       </Router>
