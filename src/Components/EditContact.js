@@ -6,6 +6,7 @@ const EditContact = (props) => {
   const { id, name, email } = contact;
 
   const [state, setState] = useState({
+    id,
     name: name || "",
     email: email || "",
   });
