@@ -1,3 +1,14 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "id": "3f55c90b-d14c-4d47-84fa-e1fe620758a9",
+      "name": "Geoffrey Kimani",
+      "email": "jeffkimzyjoe@students.uonbi.ac.ke"
+    },
+    {
+      "id": "46a26376-d918-44f0-b3e5-226ec54049f1",
+      "name": "Mary smith",
+      "email": "jeffkimzyjoe@gmail.com"
+    }
+  ]
 }

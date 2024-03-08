@@ -7,8 +7,8 @@ const EditContact = (props) => {
 
   const [state, setState] = useState({
     id,
-    name: name || "",
-    email: email || "",
+    name,
+    email,
   });
 
   const navigate = useNavigate();

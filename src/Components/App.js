@@ -32,8 +32,12 @@ function App () {
   };
 
 
-  const updateContactHandler = () => {
-
+  const updateContactHandler = async (contact) => {
+    const response = await api.put(`/contacts/${contact.id}`, contact)
+    const {id, name, email} = response.data
+    setContacts(contacts.map(contact => {
+      return contact.id === id ? {...response.data} : contact
+    }))
   }
 
   const removeContactHandler = async (id) => {
@@ -89,13 +93,11 @@ function App () {
           />
 
           <Route  
-            path="/edit" 
-            Component = {() => (
-              <EditContact updateContactHandler={updateContactHandler}/>
-            )}
-          />
+              path="/edit" 
+              element = {<EditContact updateContactHandler={updateContactHandler} />}
+            />
 
-          <Route path="/contact/:id" element={<ContactDetail />} />
+          <Route path="/contact/:id" element={<ContactDetail contacts={contacts}/>} />
 
         </Routes>
       </Router>

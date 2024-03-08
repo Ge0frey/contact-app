@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import user from "../Images/user.jpg"
+import user from "../Images/user.jpg";
 
 function ContactDetail (props)  {
     //console.log(props)
