@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import api from "../api/contacts"
 import AddContact from './AddContact';
+import EditContact from './EditContact';
 import Header from './Header';
 import ContactList from './ContactList';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ContactDetail from "./ContactDetail"
 
 const Uuid = uuidv4;
-console.log(Uuid);
+//console.log(Uuid);
 
 function App () {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -20,12 +21,24 @@ function App () {
     return response.data;
   }
 
-  const addContactHandler = (contact) => {
-    console.log(contact)
-    setContacts([...contacts, {id: Uuid(), ...contact}])
+  const addContactHandler = async (contact) => {
+    //console.log(contact)
+    const request = {
+      id: Uuid(),
+      ...contact
+    }
+
+    const response = await api.post("/contacts", request)
+    setContacts([...contacts, response.data])
   };
 
-  const removeContactHandler = (id) => {
+
+  const updateContactHandler = () => {
+
+  }
+
+  const removeContactHandler = async (id) => {
+    await api.delete(`/contacts/${id}`)
     const newContactList = contacts.filter((contact) => {
       return contact.id !==id
     });
@@ -47,8 +60,8 @@ function App () {
   }, []);
   
   useEffect(() => {
-    console.log('Contacts updated, saving to local storage:', contacts);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    //console.log('Contacts updated, saving to local storage:', contacts);
+    //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
   
 
@@ -73,6 +86,13 @@ function App () {
             path="/add" 
             Component = {() => (
               <AddContact addContactHandler={addContactHandler}/>
+            )}
+          />
+
+          <Route  
+            path="/edit" 
+            Component = {() => (
+              <EditContact updateContactHandler={updateContactHandler}/>
             )}
           />
 
