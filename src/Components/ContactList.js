@@ -35,7 +35,7 @@ const ContactList = (props) => {
             <Link to= "/add">
                 <button className="ui button black right">Add Contact</button>   
             </Link>
-            <div className="ui celled list">{renderContactList}</div>
+            <div className="ui celled list">{renderContactList.length > 0 ? renderContactList : "No contacts available"}</div>
         </div>
     );
 }
