@@ -12,7 +12,6 @@ const Uuid = uuidv4;
 //console.log(Uuid);
 
 function App () {
-  const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
 
   //retrieve contacts

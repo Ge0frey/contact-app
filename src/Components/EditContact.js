@@ -2,17 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EditContact = (props) => {
-    const contact = props.location?.state?.contact || {};
-    const { id, name, email } = contact;
-    this.state = {
-      id,
-      name,
-      email,
-    }
+  const contact = props.location?.state?.contact || {};
+  const { id, name, email } = contact;
 
   const [state, setState] = useState({
-    name: "",
-    email: "",
+    name: name || "",
+    email: email || "",
   });
 
   const navigate = useNavigate();
@@ -24,19 +19,19 @@ const EditContact = (props) => {
       return;
     }
 
-    if (typeof props.addContactHandler === "function") {
-      props.addContactHandler(state);
+    if (typeof props.updateContactHandler === "function") {
+      props.updateContactHandler({ id, ...state });
       setState({ name: "", email: "" });
       navigate("/");
     } else {
-      console.error("addContactHandler is not a function");
+      console.error("updateContactHandler is not a function");
     }
   };
 
   return (
     <div className="ui main">
       <h2>.</h2>
-      <form className="ui form" onSubmit={this.update}>
+      <form className="ui form" onSubmit={update}>
         <div className="field">
           <label>name</label>
           <input
@@ -57,7 +52,7 @@ const EditContact = (props) => {
             onChange={(e) => setState({ ...state, email: e.target.value })}
           />
         </div>
-        <button className="ui button blue">Add</button>
+        <button className="ui button blue">Update</button>
       </form>
     </div>
   );
