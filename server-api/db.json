@@ -1,0 +1,17 @@
+{
+    "contacts": [
+        {
+            "id":"ff9372ba-3004-499c-bf75-1d5d905fd4f0",
+            "name":"Geoffrey Kimani",
+            "email":"jeffkimzyjoe@students.uonbi.ac.ke"
+        },
+        {   "id":"3aa87a27-53d4-4e2e-9b02-5ad1b3fbb51d",
+            "name":"Mary smith",
+            "email":"xdg-open@outlook.com"
+        },
+        {   "id":"07ad6265-2eaa-4094-9140-a8dd21a452d3",
+            "name":"John Doe",
+            "email":"johndoe@gmail.com"
+        }
+    ]
+}
