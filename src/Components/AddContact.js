@@ -27,7 +27,7 @@ const AddContact = (props) => {
 
   return (
     <div className="ui main">
-      <h2>.</h2>
+      <h2 style={{marginTop:"30px"}}>Add contact</h2>
       <form className="ui form" onSubmit={add}>
         <div className="field">
           <label>name</label>

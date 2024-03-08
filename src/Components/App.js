@@ -13,6 +13,8 @@ const Uuid = uuidv4;
 
 function App () {
   const [contacts, setContacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([])
 
   //retrieve contacts
   const retrieveContacts = async () => {
@@ -47,6 +49,19 @@ function App () {
     });
 
     setContacts(newContactList);
+  };
+
+  const searchHandlrer = (searchTerm) => {
+    setSearchTerm(searchTerm)
+    if (searchTerm !== "") {
+      const newContactList = contacts.filter((contact) => {
+        return Object.values(contact).join(" ").toLowerCase().includes(searchTerm.toLowerCase())
+      });
+      setSearchResults(newContactList)
+    }  
+    else {
+      setSearchResults(contacts)
+    }
   }
 
   useEffect(() => {
@@ -81,6 +96,8 @@ function App () {
               <ContactList 
                 contacts={contacts} 
                 getContactId ={removeContactHandler}
+                term = {searchTerm}
+                searchKeyword = {searchHandlrer}
               />
             )}
           />
