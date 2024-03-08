@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import api from "../api/contacts"
 import AddContact from './AddContact';
 import Header from './Header';
 import ContactList from './ContactList';
@@ -12,6 +13,12 @@ console.log(Uuid);
 function App () {
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
+
+  //retrieve contacts
+  const retrieveContacts = async () => {
+    const response = await api.get("/contacts");
+    return response.data;
+  }
 
   const addContactHandler = (contact) => {
     console.log(contact)
@@ -27,9 +34,16 @@ function App () {
   }
 
   useEffect(() => {
-    const retrievedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    console.log('Retrieved Contacts:', retrievedContacts);
-    if (retrievedContacts) setContacts(retrievedContacts);
+    // const retrievedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // console.log('Retrieved Contacts:', retrievedContacts);
+    // if (retrievedContacts) setContacts(retrievedContacts);
+
+    const getAllContacts = async () => {
+      const allContacts = await retrieveContacts();
+      if (allContacts) setContacts (allContacts);
+    };
+
+    getAllContacts();
   }, []);
   
   useEffect(() => {
